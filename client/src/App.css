@@ -1,0 +1,262 @@
+/* client/src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Cores extraídas do Logo Vixel */
+  --primary-gradient: linear-gradient(135deg, #E940AA 0%, #5D2C99 100%);
+  --primary-color: #E940AA;
+  --secondary-color: #5D2C99;
+  
+  --sidebar-bg: #FFFFFF;
+  --main-bg: #FFF5F9; /* Rosa bem clarinho */
+  --card-bg: #FFFFFF;
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
+  --border-color: #F3E8F0;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 10px 30px -10px rgba(93, 44, 153, 0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body, #root {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--main-bg);
+  color: var(--text-primary);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Trava o scroll da janela inteira */
+}
+
+/* --- TELA DE LOGIN --- */
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--main-bg);
+  position: fixed;
+  z-index: 9999;
+}
+
+.login-card {
+  background: white;
+  padding: 48px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  border: 1px solid white;
+}
+
+.logo-img {
+  height: 40px; /* Ajuste conforme necessário */
+  margin-bottom: 12px;
+}
+
+.login-header p { color: var(--text-secondary); margin-bottom: 32px; font-size: 15px; }
+
+.login-form { display: flex; flex-direction: column; gap: 16px; text-align: left; }
+.input-group label { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; display: block; }
+
+/* INPUTS ESTILIZADOS CLEAN */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select { 
+    width: 100%; 
+    padding: 12px 16px; 
+    border: 1px solid var(--border-color); 
+    border-radius: 12px; 
+    outline: none; 
+    transition: 0.2s; 
+    background: #FAFAFA;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-family: inherit;
+}
+
+input:focus, select:focus { 
+    background: #FFF;
+    border-color: var(--primary-color); 
+    box-shadow: 0 0 0 3px rgba(233, 64, 170, 0.1); 
+}
+
+/* BOTÃO GRADIENTE */
+.btn-primary {
+  background: var(--primary-gradient);
+  color: white; border: none; padding: 14px 24px;
+  border-radius: 12px; font-weight: 600; cursor: pointer; transition: 0.2s; 
+  box-shadow: 0 4px 15px rgba(233, 64, 170, 0.3);
+  width: 100%;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(233, 64, 170, 0.4); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.login-footer { margin-top: 24px; font-size: 14px; color: var(--text-secondary); }
+.login-footer span { color: var(--primary-color); font-weight: 700; cursor: pointer; }
+
+/* --- DASHBOARD LAYOUT --- */
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
+  display: flex; flex-direction: column;
+  padding: 24px;
+  height: 100%;
+}
+.sidebar-logo-img { height: 32px; margin-bottom: 40px; display: block; }
+.sidebar-nav { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+
+.nav-item {
+  display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+  border-radius: 12px; background: transparent; border: none;
+  color: var(--text-secondary); font-weight: 500; cursor: pointer;
+  transition: 0.2s; width: 100%; text-align: left; font-size: 14px;
+}
+.nav-item:hover { background: #FFF0F7; color: var(--primary-color); }
+.nav-item.active { background: #FFF0F7; color: var(--primary-color); font-weight: 700; }
+.nav-item svg { stroke-width: 2.5px; }
+
+/* Main Content */
+.main-content {
+  background: var(--main-bg);
+  display: flex; flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.top-header {
+  height: 70px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px;
+  flex-shrink: 0;
+}
+.breadcrumbs { font-size: 14px; color: var(--text-secondary); }
+.breadcrumbs .current { color: var(--secondary-color); font-weight: 700; }
+
+.btn-outline { 
+    display: flex; align-items: center; gap: 8px; background: white; 
+    border: 1px solid var(--border-color); padding: 8px 16px; border-radius: 10px; 
+    cursor: pointer; font-size: 13px; font-weight: 600; box-shadow: var(--shadow-sm); 
+    color: var(--secondary-color);
+}
+.btn-outline:hover { border-color: var(--secondary-color); background: #FAF5FF; }
+
+/* Área de Trabalho */
+.content-area {
+  flex: 1; 
+  padding: 0 32px 32px 32px;
+  width: 100%;
+  overflow: hidden; /* Previne scroll duplo */
+  display: flex;
+}
+
+.editor-grid {
+  display: grid;
+  grid-template-columns: 1fr 350px; /* Canvas ocupa tudo, Painel fixo */
+  gap: 24px;
+  width: 100%;
+  height: 100%;
+}
+
+/* Canvas Container */
+.card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(255,255,255,0.5);
+  display: flex; flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.canvas-card-container {  }
+
+.card-header {
+  padding: 16px 24px; border-bottom: 1px solid var(--border-color);
+  display: flex; justify-content: space-between; align-items: center;
+  background: white;
+}
+.card-header h3 { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+.badge { background: #FDF2F8; color: var(--primary-color); padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+
+.canvas-wrapper-box {
+  flex: 1; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  background: #E5E7EB; /* Fundo cinza pra destacar a imagem */
+  background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+  background-size: 20px 20px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0 0 20px 20px;
+}
+
+/* Painel Direito */
+.controls-column { 
+    display: flex; flex-direction: column; gap: 20px; 
+    overflow-y: auto; /* Scroll só aqui se precisar */
+    padding-bottom: 20px;
+}
+.config-card { flex-shrink: 0; }
+
+.config-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+
+.control-label { font-size: 11px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* Botão Upload */
+.upload-btn-styled {
+  width: 100%; padding: 12px; border: 1px dashed #E940AA;
+  border-radius: 12px; background: #FFF0F7; font-size: 14px;
+  cursor: pointer; text-align: center; color: #E940AA; font-weight: 600;
+  transition: 0.2s;
+}
+.upload-btn-styled:hover { background: #FCE7F3; }
+
+.divider { height: 1px; background: var(--border-color); margin: 8px 0; }
+.row-2-col { display: grid; grid-template-columns: 1fr 2fr; gap: 12px; }
+
+.color-picker-styled {
+  display: flex; align-items: center; gap: 10px; padding: 6px; border: 1px solid var(--border-color);
+  border-radius: 12px; background: white; height: 45px;
+}
+.color-picker-styled input[type="color"] { 
+  width: 100%; height: 32px; border: none; border-radius: 8px; cursor: pointer; padding: 0; background: none;
+}
+
+.mt-4 { margin-top: 16px; }
+
+/* Result Preview Mini */
+.result-preview-box {
+  padding: 24px; display: flex; justify-content: center;
+  align-items: center; background: #FAFAFA; border-radius: 0 0 20px 20px;
+  min-height: 200px;
+}
+.result-preview-box img { max-width: 100%; max-height: 250px; border-radius: 8px; box-shadow: var(--shadow-sm); }
+.empty-upload { color: var(--text-secondary); font-size: 14px; }
+
+/* Modal */
+.modal-backdrop {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(93, 44, 153, 0.4); backdrop-filter: blur(4px); z-index: 2000;
+    display: flex; justify-content: center; align-items: center;
+}
+.modal-content {
+    background: white; padding: 32px; border-radius: 20px; width: 90%; max-width: 550px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+.code-block {
+    background: #1F2937; color: #A5B4FC; padding: 20px; border-radius: 12px;
+    font-family: 'Fira Code', monospace; font-size: 13px; margin: 24px 0; overflow-x: auto;
+}

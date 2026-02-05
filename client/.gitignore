@@ -1,0 +1,21 @@
+# Node
+node_modules/
+
+# Builds
+dist/
+build/
+
+# Env
+.env
+.env.*
+
+# Uploads / runtime
+uploads/
+server/uploads/
+
+# Logs
+*.log
+
+# OS / Editor
+.DS_Store
+.vscode/
